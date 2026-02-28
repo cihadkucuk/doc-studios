@@ -78,9 +78,13 @@ export function VideoPlayerModal({
               className="w-full h-full object-contain bg-black"
               poster={poster || undefined}
               controls
+              controlsList="nodownload"
+              disablePictureInPicture
               playsInline
               autoPlay
               preload="metadata"
+              onContextMenu={(event) => event.preventDefault()}
+              onDragStart={(event) => event.preventDefault()}
             >
               <source src={videoUrl} type="video/mp4" />
               Your browser does not support the video tag.
