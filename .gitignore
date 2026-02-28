@@ -1,0 +1,26 @@
+# dependencies
+node_modules/
+
+# next build output
+.next/
+out/
+
+# archives and local exports
+out.zip
+out.rar
+*.zip
+*.rar
+
+# logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# env files
+.env*
+!.env.example
+
+# typescript
+tsconfig.tsbuildinfo
