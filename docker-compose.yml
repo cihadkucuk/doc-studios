@@ -10,7 +10,5 @@ services:
       HOSTNAME: 0.0.0.0
       TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN:-}
       TELEGRAM_CHAT_ID: ${TELEGRAM_CHAT_ID:-}
-    ports:
-      - "3000:3000"
     expose:
       - "3000"
