@@ -185,7 +185,7 @@ export function Contact() {
                   </div>
                   <div>
                     <h3 className="font-serif font-bold text-white text-lg">Email</h3>
-                    <a href="mailto:info@docstudios.eu" className="font-sans text-gray-300 hover:text-white">
+                    <a className="font-sans text-gray-300 hover:text-white">
                       info@docstudios.eu
                     </a>
                   </div>
