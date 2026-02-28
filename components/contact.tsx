@@ -14,6 +14,7 @@ const initialFormData = {
   email: "",
   projectType: "",
   description: "",
+  website: "",
 }
 
 export function Contact() {
@@ -130,6 +131,15 @@ export function Contact() {
                   required
                   className="bg-black/40 border-gray-700 text-white placeholder:text-gray-500"
                 />
+                <Input
+                  name="website"
+                  value={formData.website}
+                  onChange={handleInputChange}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  className="hidden"
+                  aria-hidden="true"
+                />
                 <Textarea
                   name="description"
                   value={formData.description}
@@ -185,9 +195,7 @@ export function Contact() {
                   </div>
                   <div>
                     <h3 className="font-serif font-bold text-white text-lg">Email</h3>
-                    <a className="font-sans text-gray-300 hover:text-white">
-                      info@docstudios.eu
-                    </a>
+                    <span className="font-sans text-gray-300">info@docstudios.eu</span>
                   </div>
                 </div>
                 <p className="font-sans text-gray-400 text-sm">
