@@ -1,13 +1,14 @@
 services:
-  doc-studios:
+  web:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: doc-studios
-    ports:
-      - "3000:3000"
+    restart: unless-stopped
     environment:
       NODE_ENV: production
-      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN}
-      TELEGRAM_CHAT_ID: ${TELEGRAM_CHAT_ID}
-    restart: unless-stopped
+      PORT: 3000
+      HOSTNAME: 0.0.0.0
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN:?set-in-dokploy-env}
+      TELEGRAM_CHAT_ID: ${TELEGRAM_CHAT_ID:?set-in-dokploy-env}
+    expose:
+      - "3000"
