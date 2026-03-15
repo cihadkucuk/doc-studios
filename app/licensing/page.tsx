@@ -11,6 +11,16 @@ import {
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { createPageMetadata } from "@/lib/seo"
+
+export const metadata = createPageMetadata({
+  title: "Structured Music Licensing for Professional Releases | DOC Studios",
+  description:
+    "Structured licensing with clear scope, term, territory, and exclusivity models for film, game, and advertising projects.",
+  path: "/licensing",
+  includeAlternates: true,
+  keywords: ["music licensing structure", "sync license", "claim-free music", "exclusivity models"],
+})
 
 const badgeItems = [
   {
@@ -75,7 +85,7 @@ const territoryOptions = [
 export default function LicensingPage() {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-black via-gray-950 to-black">
-      <Navigation />
+      <Navigation locale="en" />
 
       <main className="flex-1 pt-28 pb-20 px-6">
         <div className="max-w-6xl mx-auto">
@@ -304,7 +314,7 @@ export default function LicensingPage() {
         </div>
       </main>
 
-      <Footer />
+      <Footer locale="en" />
     </div>
   )
 }

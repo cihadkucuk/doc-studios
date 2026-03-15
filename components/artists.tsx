@@ -4,6 +4,8 @@ import { useState } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Film, Gamepad2, Megaphone, Play } from "lucide-react"
 import { VideoPlayerModal } from "./video-player-modal"
+import { defaultLocale, type SiteLocale } from "@/lib/i18n"
+import { getSiteCopy } from "@/lib/site-copy"
 
 type WorkSample = {
   title: string
@@ -17,44 +19,35 @@ type WorkSample = {
   icon: typeof Film
 }
 
-const workSamples: WorkSample[] = [
+const sampleAssets = [
   {
-    title: "Maria",
-    productType: "Film Score Sample",
-    theme: "Melancholy, Sorrow, Liberation",
-    quote: "His war was for freedom; his peace was her name.",
     thumbnail: "/images/maria.jpg",
     videoUrl: "/videos/maria.mp4",
-    description:
-      "A melancholic orchestral composition that captures the deep sorrow of a woman left behind as her love chose liberation over their bond.",
-    artistInfo: "An intimate portrait of heartbreak and sacrifice, composed with raw emotional depth.",
     icon: Film,
   },
   {
-    title: "Apple Iphone XR",
-    productType: "Advertisement Sample",
-    theme: "Minimal, Premium, Product Focused",
-    quote: "Innovation meets sonic precision.",
     thumbnail: "/images/apple-iphone-xr.jpg",
     videoUrl: "/videos/apple-iphone-xr.mp4",
-    description: "Modern, sleek commercial music designed to support premium technology storytelling.",
-    artistInfo: "Built for brand campaigns that require clean structure and strong product framing.",
     icon: Megaphone,
   },
   {
-    title: "Doerfield",
-    productType: "Game Music Sample",
-    theme: "Game, Military, Honor",
-    quote: "Victory is written in blood and brass.",
     thumbnail: "/images/doerfield.jpg",
     videoUrl: "/videos/doerfield.mp4",
-    description: "Epic battle music combining orchestral scale with modern interactive pacing.",
-    artistInfo: "Designed for AAA gaming experiences with tactical intensity and cinematic motion.",
     icon: Gamepad2,
   },
 ]
 
-export function Artists() {
+type ArtistsProps = {
+  locale?: SiteLocale
+}
+
+export function Artists({ locale = defaultLocale }: ArtistsProps) {
+  const copy = getSiteCopy(locale).works
+  const workSamples: WorkSample[] = copy.samples.map((sample, index) => ({
+    ...sample,
+    ...sampleAssets[index],
+  }))
+
   const [selectedVideo, setSelectedVideo] = useState<WorkSample | null>(null)
   const [hoveredVideo, setHoveredVideo] = useState<number | null>(null)
 
@@ -66,11 +59,11 @@ export function Artists() {
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="text-center mb-16">
             <h2 className="font-serif font-light text-5xl md:text-6xl text-white mb-6 chaos-glitch">
-              OUR <span className="font-bold text-red-500 minimal-glow">WORKS</span>
+              {copy.headingLead} <span className="font-bold text-red-500 minimal-glow">{copy.headingAccent}</span>
             </h2>
             <div className="w-24 h-px bg-red-500 mx-auto mb-8 subtle-pulse" />
             <p className="font-sans text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed font-light">
-              Selected cinematic and commercial productions developed for film, advertising, and interactive media.
+              {copy.description}
             </p>
           </div>
 
@@ -90,7 +83,7 @@ export function Artists() {
                     setSelectedVideo(sample)
                   }
                 }}
-                aria-label={`Play ${sample.title} sample`}
+                aria-label={sample.title}
               >
                 <div className="relative h-48 overflow-hidden border-b border-gray-800">
                   <img
@@ -142,6 +135,7 @@ export function Artists() {
       </section>
 
       <VideoPlayerModal
+        locale={locale}
         isOpen={!!selectedVideo}
         onClose={() => setSelectedVideo(null)}
         videoUrl={selectedVideo?.videoUrl}

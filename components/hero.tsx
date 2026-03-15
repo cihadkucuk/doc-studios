@@ -1,6 +1,15 @@
 "use client"
 
-export function Hero() {
+import { defaultLocale, type SiteLocale } from "@/lib/i18n"
+import { getSiteCopy } from "@/lib/site-copy"
+
+type HeroProps = {
+  locale?: SiteLocale
+}
+
+export function Hero({ locale = defaultLocale }: HeroProps) {
+  const copy = getSiteCopy(locale).hero
+
   return (
     <>
       <section className="relative h-screen flex items-center justify-center overflow-hidden bg-transparent">
@@ -31,22 +40,22 @@ export function Hero() {
         <div className="relative z-10 text-center max-w-5xl mx-auto px-6">
           <div className="mb-4">
             <span className="font-sans text-red-400 text-sm font-medium tracking-[0.2em] uppercase">
-              Prague | Music Production
+              {copy.eyebrow}
             </span>
           </div>
 
           <h1 className="font-serif font-light text-7xl md:text-8xl lg:text-9xl text-white mb-6 tracking-tight chaos-glitch">
-            DRIVE OF
+            {copy.titleLead}
             <br />
-            <span className="font-bold text-red-500 minimal-glow">CHAOS</span>
+            <span className="font-bold text-red-500 minimal-glow">{copy.titleAccent}</span>
           </h1>
 
           <div className="w-24 h-px bg-red-500 mx-auto mb-8 subtle-pulse" />
 
           <p className="font-sans text-lg md:text-xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed font-light">
-            Precision-crafted soundscapes for film, advertising, and interactive media.
+            {copy.description}
             <br />
-            Where corporate excellence meets creative disruption.
+            {copy.descriptionSecondary}
           </p>
         </div>
       </section>

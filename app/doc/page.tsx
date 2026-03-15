@@ -3,11 +3,19 @@ import { MapPin, Music, Users } from "lucide-react"
 import { Footer } from "@/components/footer"
 import { Navigation } from "@/components/navigation"
 import { Button } from "@/components/ui/button"
+import { createPageMetadata } from "@/lib/seo"
+
+export const metadata = createPageMetadata({
+  title: "About DOC Studios | Prague Music Production",
+  description: "Meet DOC Studios, a Prague-based team creating cinematic, advertising, and game music with production discipline.",
+  path: "/doc",
+  includeAlternates: true,
+})
 
 export default function DocPage() {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-black to-red-950/20">
-      <Navigation />
+      <Navigation locale="en" />
 
       <main className="flex-1 pt-24 pb-16">
         <div className="container mx-auto px-6">
@@ -88,7 +96,7 @@ export default function DocPage() {
         </div>
       </main>
 
-      <Footer />
+      <Footer locale="en" />
     </div>
   )
 }

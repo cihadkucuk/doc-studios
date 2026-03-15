@@ -5,6 +5,16 @@ import { LicensingPreview } from "@/components/licensing-preview"
 import { Artists } from "@/components/artists"
 import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
+import { createPageMetadata } from "@/lib/seo"
+
+export const metadata = createPageMetadata({
+  title: "Music Production for Film, Advertising, and Games | DOC Studios",
+  description:
+    "DOC Studios delivers cinematic music production, advertising sound design, and game music with structured licensing from Prague.",
+  path: "/",
+  includeAlternates: true,
+  keywords: ["music production Prague", "film scoring studio", "game audio production", "advertising music"],
+})
 
 export default function Home() {
   return (
@@ -17,15 +27,15 @@ export default function Home() {
         </div>
 
         <div className="relative z-10">
-          <Navigation />
-          <Hero />
-          <Services />
-          <LicensingPreview />
-          <Artists />
-          <Contact />
+          <Navigation locale="en" />
+          <Hero locale="en" />
+          <Services locale="en" />
+          <LicensingPreview locale="en" />
+          <Artists locale="en" />
+          <Contact locale="en" />
         </div>
       </main>
-      <Footer />
+      <Footer locale="en" />
     </div>
   )
 }

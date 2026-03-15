@@ -3,8 +3,11 @@
 import { useEffect, useRef } from "react"
 import { X } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { defaultLocale, type SiteLocale } from "@/lib/i18n"
+import { getSiteCopy } from "@/lib/site-copy"
 
 interface VideoPlayerModalProps {
+  locale?: SiteLocale
   isOpen: boolean
   onClose: () => void
   videoUrl?: string
@@ -15,14 +18,16 @@ interface VideoPlayerModalProps {
 }
 
 export function VideoPlayerModal({
+  locale = defaultLocale,
   isOpen,
   onClose,
   videoUrl = "",
   poster = "",
-  title = "Work Preview",
+  title,
   description = "",
   artistInfo = "",
 }: VideoPlayerModalProps) {
+  const copy = getSiteCopy(locale).works.modal
   const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
@@ -66,7 +71,7 @@ export function VideoPlayerModal({
           variant="ghost"
           size="sm"
           className="absolute top-3 right-3 z-10 text-red-500 hover:text-white hover:bg-red-600/20"
-          aria-label="Close video"
+          aria-label={copy.closeVideoLabel}
         >
           <X className="h-5 w-5" />
         </Button>
@@ -87,26 +92,26 @@ export function VideoPlayerModal({
               onDragStart={(event) => event.preventDefault()}
             >
               <source src={videoUrl} type="video/mp4" />
-              Your browser does not support the video tag.
+              {copy.browserNotSupported}
             </video>
           ) : (
-            <div className="flex items-center justify-center h-full text-red-500 text-lg">Video unavailable</div>
+            <div className="flex items-center justify-center h-full text-red-500 text-lg">{copy.videoUnavailable}</div>
           )}
         </div>
 
         <div className="p-6 bg-gradient-to-b from-black to-red-950/20">
-          <h3 className="text-2xl font-serif font-bold text-white mb-4">{title}</h3>
+          <h3 className="text-2xl font-serif font-bold text-white mb-4">{title || copy.fallbackTitle}</h3>
 
           {description && (
             <div className="mb-4">
-              <h4 className="text-red-500 font-semibold mb-2">About This Track:</h4>
+              <h4 className="text-red-500 font-semibold mb-2">{copy.aboutTrackLabel}</h4>
               <p className="text-red-100 leading-relaxed">{description}</p>
             </div>
           )}
 
           {artistInfo && (
             <div className="border-t border-red-600/30 pt-4">
-              <h4 className="text-red-500 font-semibold mb-2">Artist Info:</h4>
+              <h4 className="text-red-500 font-semibold mb-2">{copy.artistInfoLabel}</h4>
               <p className="text-red-100 leading-relaxed">{artistInfo}</p>
             </div>
           )}
