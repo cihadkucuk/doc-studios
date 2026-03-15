@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next"
 import { getAllBlogSlugs } from "@/lib/blog"
-import { locales, toLocalizedPath } from "@/lib/i18n"
+import { localeLanguageTags, locales, toLocalizedPath } from "@/lib/i18n"
 import { absoluteUrl } from "@/lib/seo"
 
 const staticPaths = [
@@ -19,12 +19,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const allPaths = [...staticPaths, ...blogPaths]
   const now = new Date()
 
-  return locales.flatMap((locale) =>
-    allPaths.map((path) => ({
-      url: absoluteUrl(toLocalizedPath(locale, path)),
+  return allPaths.map((path) => {
+    const languages: Record<string, string> = {}
+    for (const locale of locales) {
+      languages[localeLanguageTags[locale]] = absoluteUrl(toLocalizedPath(locale, path))
+    }
+
+    return {
+      url: absoluteUrl(toLocalizedPath("en", path)),
       lastModified: now,
       changeFrequency: "weekly",
       priority: path === "/" ? 1 : 0.8,
-    })),
-  )
+      alternates: { languages },
+    }
+  })
 }
