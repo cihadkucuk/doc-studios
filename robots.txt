@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://docstudios.eu/sitemap.xml
+Host: https://docstudios.eu
