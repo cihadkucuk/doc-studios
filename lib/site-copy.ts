@@ -129,9 +129,9 @@ export const siteCopy: Record<SiteLocale, SiteCopy> = {
       languageLabel: "Language",
     },
     hero: {
-      eyebrow: "Prague | Music Production",
-      titleLead: "DRIVE OF",
-      titleAccent: "CHAOS",
+      eyebrow: "Drive of Chaos",
+      titleLead: "Music Production in Prague",
+      titleAccent: "for Film, Games & Advertising",
       description: "Precision-crafted soundscapes for film, advertising, and interactive media.",
       descriptionSecondary: "Where corporate excellence meets creative disruption.",
     },

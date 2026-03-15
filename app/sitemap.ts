@@ -3,7 +3,16 @@ import { getAllBlogSlugs } from "@/lib/blog"
 import { locales, toLocalizedPath } from "@/lib/i18n"
 import { absoluteUrl } from "@/lib/seo"
 
-const staticPaths = ["/", "/licensing", "/doc", "/free-sounds-pack", "/blog"]
+const staticPaths = [
+  "/",
+  "/licensing",
+  "/doc",
+  "/free-sounds-pack",
+  "/blog",
+  "/film-scoring-prague",
+  "/game-music-composer-prague",
+  "/advertising-music-production-prague",
+]
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const blogPaths = getAllBlogSlugs().map((slug) => `/blog/${slug}`)

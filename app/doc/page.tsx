@@ -5,12 +5,18 @@ import { Navigation } from "@/components/navigation"
 import { Button } from "@/components/ui/button"
 import { createPageMetadata } from "@/lib/seo"
 
-export const metadata = createPageMetadata({
-  title: "About DOC Studios | Prague Music Production",
-  description: "Meet DOC Studios, a Prague-based team creating cinematic, advertising, and game music with production discipline.",
-  path: "/doc",
-  includeAlternates: true,
-})
+const pageTitle = "About DOC Studios | Music Production Studio in Prague"
+
+export const metadata = {
+  ...createPageMetadata({
+    title: pageTitle,
+    description:
+      "Meet DOC Studios, a Prague music production studio creating cinematic scores, game soundtracks, and advertising music with a clear creative process.",
+    path: "/doc",
+    includeAlternates: true,
+  }),
+  title: { absolute: pageTitle },
+}
 
 export default function DocPage() {
   return (
@@ -23,7 +29,7 @@ export default function DocPage() {
             <div className="space-y-8">
               <div>
                 <h1 className="font-serif font-bold text-5xl md:text-7xl text-white mb-6 blood-text-glow">
-                  ABOUT <span className="text-red-500">US</span>
+                  About <span className="text-red-500">DOC Studios</span>
                 </h1>
                 <div className="w-24 h-1 bg-gradient-to-r from-red-600 to-transparent mb-8" />
               </div>

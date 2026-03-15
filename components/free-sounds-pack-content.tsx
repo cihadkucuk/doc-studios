@@ -24,8 +24,8 @@ const copy: Record<
 > = {
   en: {
     backToHome: "Back to Home",
-    titleLead: "FREE",
-    titleAccent: "SOUNDS PACK",
+    titleLead: "Free Sounds Pack for",
+    titleAccent: "Film, Games & Advertising",
     description: "Get exclusive access to our premium sound collection. Fill out the form below to receive your free download.",
     formNote: "Complete the form below to unlock your free download",
     loading: "Loading...",

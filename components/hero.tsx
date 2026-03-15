@@ -45,9 +45,7 @@ export function Hero({ locale = defaultLocale }: HeroProps) {
           </div>
 
           <h1 className="font-serif font-light text-7xl md:text-8xl lg:text-9xl text-white mb-6 tracking-tight chaos-glitch">
-            {copy.titleLead}
-            <br />
-            <span className="font-bold text-red-500 minimal-glow">{copy.titleAccent}</span>
+            {copy.titleLead} <span className="font-bold text-red-500 minimal-glow">{copy.titleAccent}</span>
           </h1>
 
           <div className="w-24 h-px bg-red-500 mx-auto mb-8 subtle-pulse" />

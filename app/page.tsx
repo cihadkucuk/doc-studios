@@ -7,14 +7,19 @@ import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
 import { createPageMetadata } from "@/lib/seo"
 
-export const metadata = createPageMetadata({
-  title: "Music Production for Film, Advertising, and Games | DOC Studios",
-  description:
-    "DOC Studios delivers cinematic music production, advertising sound design, and game music with structured licensing from Prague.",
-  path: "/",
-  includeAlternates: true,
-  keywords: ["music production Prague", "film scoring studio", "game audio production", "advertising music"],
-})
+const pageTitle = "Music Production Studio in Prague | DOC Studios"
+
+export const metadata = {
+  ...createPageMetadata({
+    title: pageTitle,
+    description:
+      "DOC Studios is a Prague music production studio creating original scores, game music, advertising audio, and clear licensing for modern productions.",
+    path: "/",
+    includeAlternates: true,
+    keywords: ["music production Prague", "film scoring studio", "game audio production", "advertising music"],
+  }),
+  title: { absolute: pageTitle },
+}
 
 export default function Home() {
   return (

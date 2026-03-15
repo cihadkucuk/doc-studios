@@ -16,15 +16,17 @@ export function Services({ locale = defaultLocale }: ServicesProps) {
   const copy = getSiteCopy(locale).services
   const homePath = toLocalizedPath(locale, "/")
   const freePackPath = toLocalizedPath(locale, "/free-sounds-pack")
-
-  const scrollToWorks = () => {
-    const worksSection = document.getElementById("artists")
-    if (worksSection) {
-      worksSection.scrollIntoView({ behavior: "smooth" })
-      return
-    }
-    window.location.href = `${homePath}#artists`
-  }
+  const worksPath = `${homePath}#artists`
+  const serviceLandingPaths = [
+    toLocalizedPath(locale, "/film-scoring-prague"),
+    toLocalizedPath(locale, "/advertising-music-production-prague"),
+    toLocalizedPath(locale, "/game-music-composer-prague"),
+  ]
+  const serviceCtaLabels = [
+    "Film Scoring Studio in Prague",
+    "Advertising Music Production in Prague",
+    "Game Music Composer in Prague",
+  ]
 
   return (
     <section id="services" className="relative py-24 px-6 bg-transparent overflow-hidden">
@@ -50,28 +52,22 @@ export function Services({ locale = defaultLocale }: ServicesProps) {
         <div className="grid md:grid-cols-3 gap-8">
           {copy.cards.map((service, index) => {
             const ServiceIcon = icons[index]
+            const landingPath = serviceLandingPaths[index]
+            const ctaLabel = serviceCtaLabels[index]
 
             return (
-            <Card
-              key={service.title}
-              className="bg-gradient-to-br from-gray-900 to-black border-gray-700 hover:border-red-500/50 transition-all duration-300 group cursor-pointer minimal-glow h-full"
-              role="button"
-              tabIndex={0}
-              onClick={scrollToWorks}
-              onKeyDown={(event) => {
-                if (event.key === "Enter" || event.key === " ") {
-                  event.preventDefault()
-                  scrollToWorks()
-                }
-              }}
-              aria-label={service.title}
-            >
+              <Card
+                key={service.title}
+                className="bg-gradient-to-br from-gray-900 to-black border-gray-700 hover:border-red-500/50 transition-all duration-300 group minimal-glow h-full"
+              >
                 <CardHeader className="text-center pb-4">
                   <div className="mx-auto mb-6 p-4 bg-red-600/10 rounded-sm w-fit group-hover:bg-red-600/20 transition-colors border border-red-500/20">
                     <ServiceIcon className="h-6 w-6 text-red-500" />
                   </div>
                   <CardTitle className="font-serif font-medium text-xl text-white mb-3 group-hover:text-red-100 transition-colors">
-                    {service.title}
+                    <Link href={landingPath} className="hover:text-red-100 transition-colors">
+                      {service.title}
+                    </Link>
                   </CardTitle>
                   <CardDescription className="font-sans text-red-400 font-light text-sm tracking-wide uppercase">
                     {service.subtitle}
@@ -81,9 +77,24 @@ export function Services({ locale = defaultLocale }: ServicesProps) {
                   <p className="font-sans text-gray-400 leading-relaxed text-sm group-hover:text-gray-300 transition-colors">
                     {service.description}
                   </p>
+                  <div className="mt-6 flex flex-col gap-2">
+                    <Link
+                      href={landingPath}
+                      className="inline-flex items-center font-sans text-xs uppercase tracking-[0.12em] text-red-200 hover:text-white transition-colors"
+                    >
+                      Explore {ctaLabel}
+                    </Link>
+                    <Link
+                      href={worksPath}
+                      className="inline-flex items-center font-sans text-xs uppercase tracking-[0.12em] text-gray-400 hover:text-red-200 transition-colors"
+                    >
+                      View Related Work References
+                    </Link>
+                  </div>
                 </CardContent>
-            </Card>
-          )})}
+              </Card>
+            )
+          })}
         </div>
       </div>
     </section>

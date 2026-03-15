@@ -13,14 +13,19 @@ import { Footer } from "@/components/footer"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { createPageMetadata } from "@/lib/seo"
 
-export const metadata = createPageMetadata({
-  title: "Structured Music Licensing for Professional Releases | DOC Studios",
-  description:
-    "Structured licensing with clear scope, term, territory, and exclusivity models for film, game, and advertising projects.",
-  path: "/licensing",
-  includeAlternates: true,
-  keywords: ["music licensing structure", "sync license", "claim-free music", "exclusivity models"],
-})
+const pageTitle = "Music Licensing for Film, Games & Ads | DOC Studios"
+
+export const metadata = {
+  ...createPageMetadata({
+    title: pageTitle,
+    description:
+      "Explore clear music licensing for film, games, advertising, and digital campaigns with defined rights, territories, terms, and exclusivity options.",
+    path: "/licensing",
+    includeAlternates: true,
+    keywords: ["music licensing structure", "sync license", "claim-free music", "exclusivity models"],
+  }),
+  title: { absolute: pageTitle },
+}
 
 const badgeItems = [
   {
@@ -90,8 +95,9 @@ export default function LicensingPage() {
       <main className="flex-1 pt-28 pb-20 px-6">
         <div className="max-w-6xl mx-auto">
           <section className="text-center mb-16">
+            <p className="font-sans text-xs uppercase tracking-[0.18em] text-red-400 mb-4">Clarity in Every Right</p>
             <h1 className="font-serif font-light text-5xl md:text-7xl text-white mb-6 chaos-glitch">
-              CLARITY IN <span className="font-bold text-red-500 minimal-glow">EVERY RIGHT</span>
+              Music Licensing for <span className="font-bold text-red-500 minimal-glow">Film, Games &amp; Advertising</span>
             </h1>
             <div className="w-24 h-px bg-red-500 mx-auto mb-8 subtle-pulse" />
             <p className="font-sans text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed font-light">

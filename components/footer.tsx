@@ -11,6 +11,9 @@ export function Footer({ locale = defaultLocale }: FooterProps) {
   const homePath = toLocalizedPath(locale, "/")
   const licensingPath = toLocalizedPath(locale, "/licensing")
   const blogPath = toLocalizedPath(locale, "/blog")
+  const filmScoringPath = toLocalizedPath(locale, "/film-scoring-prague")
+  const gameMusicPath = toLocalizedPath(locale, "/game-music-composer-prague")
+  const advertisingMusicPath = toLocalizedPath(locale, "/advertising-music-production-prague")
 
   return (
     <footer className="w-full border-t border-slate-700 bg-slate-900 px-6 py-12">
@@ -21,19 +24,35 @@ export function Footer({ locale = defaultLocale }: FooterProps) {
             <p className="font-sans text-slate-400">{copy.tagline}</p>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 md:justify-end">
-            <Link href={`${homePath}#services`} className="font-sans text-slate-400 hover:text-primary transition-colors">
-              {copy.links.services}
-            </Link>
-            <Link href={licensingPath} className="font-sans text-slate-400 hover:text-primary transition-colors">
-              {copy.links.licensing}
-            </Link>
-            <Link href={blogPath} className="font-sans text-slate-400 hover:text-primary transition-colors">
-              {copy.links.blog}
-            </Link>
-            <Link href={`${homePath}#contact`} className="font-sans text-slate-400 hover:text-primary transition-colors">
-              {copy.links.contact}
-            </Link>
+          <div className="flex flex-col items-center gap-y-3 md:items-end">
+            <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 md:justify-end">
+              <Link href={`${homePath}#services`} className="font-sans text-slate-400 hover:text-primary transition-colors">
+                {copy.links.services}
+              </Link>
+              <Link href={licensingPath} className="font-sans text-slate-400 hover:text-primary transition-colors">
+                {copy.links.licensing}
+              </Link>
+              <Link href={blogPath} className="font-sans text-slate-400 hover:text-primary transition-colors">
+                {copy.links.blog}
+              </Link>
+              <Link href={`${homePath}#contact`} className="font-sans text-slate-400 hover:text-primary transition-colors">
+                {copy.links.contact}
+              </Link>
+            </div>
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 md:justify-end">
+              <Link href={filmScoringPath} className="font-sans text-xs text-slate-500 hover:text-red-200 transition-colors">
+                Film Scoring Prague
+              </Link>
+              <Link href={gameMusicPath} className="font-sans text-xs text-slate-500 hover:text-red-200 transition-colors">
+                Game Music Composer Prague
+              </Link>
+              <Link
+                href={advertisingMusicPath}
+                className="font-sans text-xs text-slate-500 hover:text-red-200 transition-colors"
+              >
+                Advertising Music Production Prague
+              </Link>
+            </div>
           </div>
         </div>
 
